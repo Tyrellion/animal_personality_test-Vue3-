@@ -6,7 +6,7 @@ const store = createStore({
     return {
       counter: 3,
       answer: "0",
-      which:''
+      which:''//每次点击A或者B都会为which赋值，最终通过按钮绑定的方法判断调用changeA还是changeB，从而解决反复选择问题
     };
   },
 
