@@ -6,6 +6,7 @@ const store = createStore({
     return {
       counter: 3,
       answer: "0",
+      which:''
     };
   },
 
@@ -18,6 +19,12 @@ const store = createStore({
     },
     changeB(state) {
       state.answer = state.answer + "B";
+    },
+    whichA(state) {
+      state.which =  "A";
+    },
+    whichB(state) {
+      state.which =  "B";
     },
     //再次测试时将answer还原
     restart(state) {

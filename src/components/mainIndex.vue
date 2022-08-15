@@ -12,12 +12,12 @@
           <br /><input
             type="radio"
             name="q1"
-            @click.once="changeA"
+            @click="changeA"
           />A.跟着蝴蝶的指引<br />
           <input
             type="radio"
             name="q1"
-            @click.once="changeB"
+            @click="changeB"
           />B.自由自在的游玩<br />
         </td>
       </tr>
@@ -32,7 +32,11 @@
         ><tr>
           <td>
             <el-row>
-              <el-button type="success" style="color: #006400" plain
+              <el-button
+                @click="choose"
+                type="success"
+                style="color: #006400"
+                plain
                 >继续探索</el-button
               ></el-row
             >
@@ -53,21 +57,28 @@ export default {
   setup() {
     const store = useStore();
     function changeA() {
-      store.commit("changeA");
+      store.commit("whichA");
     }
     function changeB() {
-      store.commit("changeB");
+      store.commit("whichB");
     }
-    return { changeA, changeB };
+    function choose() {
+      if (store.state.which === "A") {
+        store.commit("changeA");
+      } else {
+        store.commit("changeB");
+      }
+    }
+    return { changeA, changeB, choose };
   },
   /* methods: {
    changeA() {
       this.$store.commit("changeA");
-    }, 
+    },
     changeB() {
       this.$store.commit("changeB");
     },
-    
+
   }, */
 };
 </script>
